@@ -1,0 +1,34 @@
+name: deploy site
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Git checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node Packages
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Node Packages
+        run: npm ci
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.BUILD_TOKEN }}
+          external_repository: gndpwnd/gndpwnd.github.io
+          publish_dir: ./
+          publish_branch: published
