@@ -21,6 +21,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.BUILD_TOKEN }}
-          external_repository: gndpwnd/gndpwnd.github.io
+          external_repository: gndpwnd/hoodbuilder
           publish_dir: ./
           publish_branch: published
